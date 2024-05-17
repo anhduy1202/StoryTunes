@@ -22,7 +22,7 @@ struct HomeView: View {
                     TracksListView()
                 }
             }
-        }.navigationBarBackButtonHidden(true)
+        }
             .onAppear {
                 // Ensure the access token is fetched when the view appears
                 if spotifySession.accessToken == nil {

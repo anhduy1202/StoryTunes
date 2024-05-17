@@ -16,7 +16,7 @@ struct ContentView: View {
                 VStack {
                     HeroView()
                     SlidingAnimationView()
-                    NavigationLink(destination: HomeView()) {
+                    NavigationLink(destination: MainView()) {
                         HStack {
                             Text("Get Started")
                             Image(systemName: "arrow.forward")
@@ -35,7 +35,6 @@ struct ContentView: View {
 
 struct HeroView: View {
     var body: some View {
-        
         VStack{
             Spacer()
             Image("storytunesLogo").resizable().frame(width: 128, height: 128)
