@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB3369EF2BF7628700C4BC4D /* CustomBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3369EE2BF7628700C4BC4D /* CustomBadgeView.swift */; };
 		CB3CC6A62BF7506600280ADA /* SpotifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3CC6A52BF7506600280ADA /* SpotifyModel.swift */; };
 		CB3CC6A92BF751B800280ADA /* SpotifyAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3CC6A82BF751B800280ADA /* SpotifyAuth.swift */; };
 		CB3CC6AB2BF751E200280ADA /* SpotifyFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3CC6AA2BF751E200280ADA /* SpotifyFunc.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB3369EE2BF7628700C4BC4D /* CustomBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBadgeView.swift; sourceTree = "<group>"; };
 		CB3CC6A52BF7506600280ADA /* SpotifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyModel.swift; sourceTree = "<group>"; };
 		CB3CC6A82BF751B800280ADA /* SpotifyAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAuth.swift; sourceTree = "<group>"; };
 		CB3CC6AA2BF751E200280ADA /* SpotifyFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyFunc.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				CBB70EA42BE0EC0900CECA3C /* HomeView.swift */,
 				CB3CC6AC2BF7543200280ADA /* TrackListView.swift */,
 				CB3CC6AE2BF7599A00280ADA /* MainView.swift */,
+				CB3369EE2BF7628700C4BC4D /* CustomBadgeView.swift */,
 			);
 			path = StoryTunes;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				CB3CC6AB2BF751E200280ADA /* SpotifyFunc.swift in Sources */,
 				CBB70EA52BE0EC0900CECA3C /* HomeView.swift in Sources */,
 				CBE99A872BDF2409008DC0D8 /* ContentView.swift in Sources */,
+				CB3369EF2BF7628700C4BC4D /* CustomBadgeView.swift in Sources */,
 				CB3CC6A62BF7506600280ADA /* SpotifyModel.swift in Sources */,
 				CBE99A852BDF2409008DC0D8 /* StoryTunesApp.swift in Sources */,
 			);

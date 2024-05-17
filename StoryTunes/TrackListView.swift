@@ -12,30 +12,34 @@ struct TracksListView: View {
 
     var body: some View {
         List(spotifySession.tracks, id: \.name) { track in
-            HStack {
-                if let imageUrl = track.album.images.first?.url,
-                   let url = URL(string: imageUrl) {
-                    AsyncImage(url: url) { image in
-                        image.resizable()
-                    } placeholder: {
-                        Color.gray
+            NavigationLink(destination: CustomBadgeView(track: track)) {
+                HStack {
+                    if let imageUrl = track.album.images.first?.url,
+                       let url = URL(string: imageUrl) {
+                        AsyncImage(url: url) { image in
+                            image.resizable()
+                        } placeholder: {
+                            Color.gray
+                        }
+                        .frame(width: 50, height: 50)
+                        .cornerRadius(5)
                     }
-                    .frame(width: 50, height: 50)
-                    .cornerRadius(5)
-                }
-                VStack(alignment: .leading) {
-                    Text(track.name)
-                        .font(.headline)
-                    Text(track.artists.first?.name ?? "Unknown Artist")
-                        .font(.subheadline)
-                }
-            }.padding(.leading, 48)
-                .padding(.trailing, 48)
-                .background(Color.clear)
-                .listRowBackground(Color.clear)
+                    VStack(alignment: .leading) {
+                        Text(track.name)
+                            .font(.headline)
+                        Text(track.artists.first?.name ?? "Unknown Artist")
+                            .font(.subheadline)
+                    }
+                }.padding(.leading, 48)
+                    .padding(.trailing, 48)
+                    .listStyle(PlainListStyle())
+                    .background(Color.clear)
+                    .listRowBackground(Color.clear)
+            }.background(Color.clear)
+              .onTapGesture {
+                spotifySession.currentTrack = track
+            }
         }.background(Color.clear)
-        .listStyle(PlainListStyle())
-
+         .listStyle(PlainListStyle())
         }
 }
-

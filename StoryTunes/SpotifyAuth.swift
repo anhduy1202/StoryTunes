@@ -10,6 +10,7 @@ import Foundation
 class SpotifySession: ObservableObject {
     @Published var accessToken: String?
     @Published var tracks: [TrackItem] = []
+    @Published var currentTrack: TrackItem?
     
     // Function to fetch the access token
     func fetchAccessToken() {
