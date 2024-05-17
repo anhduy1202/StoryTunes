@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import Foundation
+
 
 struct HomeView: View {
     @State private var searchText = ""
+    @EnvironmentObject var spotifySession:SpotifySession
     var body: some View {
         NavigationView{
             ZStack {
@@ -16,10 +19,17 @@ struct HomeView: View {
                 VStack{
                     InputView(searchText:$searchText)
                     Spacer()
+                    TracksListView()
                 }
             }
         }.navigationBarBackButtonHidden(true)
-    }
+            .onAppear {
+                // Ensure the access token is fetched when the view appears
+                if spotifySession.accessToken == nil {
+                    spotifySession.fetchAccessToken()
+                }
+            }
+            }
 }
 
 struct ExtendedView: View {
@@ -41,12 +51,16 @@ struct ExtendedView: View {
 
 struct InputView: View {
     @Binding var searchText: String
+    @EnvironmentObject var spotifySession:SpotifySession
     var body: some View {
         TextField("", text: $searchText)
             .placeholder(when: searchText.isEmpty) {
                 Text("Search for songs")
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
+                    .onChange(of: searchText) { newValue in
+                        searchSong(newValue)
+                                }
             }
             .frame(height: 42)
             .padding(.leading, 8)
@@ -63,6 +77,15 @@ struct InputView: View {
                         .padding(.trailing, 60)
                 })
     }
+
+    private func searchSong(_ query: String) {
+        guard let token = spotifySession.accessToken, query.count > 3 else {
+            print("Query must be at least three words or access token is unavailable.")
+            return
+        }
+        spotifySession.fetchTracks(searchQuery: query)
+    }
+
 }
 
     

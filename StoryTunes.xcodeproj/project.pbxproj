@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB3CC6A62BF7506600280ADA /* SpotifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3CC6A52BF7506600280ADA /* SpotifyModel.swift */; };
+		CB3CC6A92BF751B800280ADA /* SpotifyAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3CC6A82BF751B800280ADA /* SpotifyAuth.swift */; };
+		CB3CC6AB2BF751E200280ADA /* SpotifyFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3CC6AA2BF751E200280ADA /* SpotifyFunc.swift */; };
+		CB3CC6AD2BF7543200280ADA /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3CC6AC2BF7543200280ADA /* TrackListView.swift */; };
 		CBB70EA32BE0E2C800CECA3C /* SlidingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB70EA22BE0E2C800CECA3C /* SlidingAnimationView.swift */; };
 		CBB70EA52BE0EC0900CECA3C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB70EA42BE0EC0900CECA3C /* HomeView.swift */; };
 		CBE99A852BDF2409008DC0D8 /* StoryTunesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE99A842BDF2409008DC0D8 /* StoryTunesApp.swift */; };
@@ -36,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB3CC6A52BF7506600280ADA /* SpotifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyModel.swift; sourceTree = "<group>"; };
+		CB3CC6A82BF751B800280ADA /* SpotifyAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAuth.swift; sourceTree = "<group>"; };
+		CB3CC6AA2BF751E200280ADA /* SpotifyFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyFunc.swift; sourceTree = "<group>"; };
+		CB3CC6AC2BF7543200280ADA /* TrackListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
 		CBB70EA22BE0E2C800CECA3C /* SlidingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingAnimationView.swift; sourceTree = "<group>"; };
 		CBB70EA42BE0EC0900CECA3C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CBE415362BE39E82000BFFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +84,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB3CC6A72BF7519E00280ADA /* SpotfiyHelper */ = {
+			isa = PBXGroup;
+			children = (
+				CB3CC6A52BF7506600280ADA /* SpotifyModel.swift */,
+				CB3CC6A82BF751B800280ADA /* SpotifyAuth.swift */,
+				CB3CC6AA2BF751E200280ADA /* SpotifyFunc.swift */,
+			);
+			name = SpotfiyHelper;
+			sourceTree = "<group>";
+		};
 		CBE99A782BDF2409008DC0D8 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +117,7 @@
 		CBE99A832BDF2409008DC0D8 /* StoryTunes */ = {
 			isa = PBXGroup;
 			children = (
+				CB3CC6A72BF7519E00280ADA /* SpotfiyHelper */,
 				CBE415362BE39E82000BFFCF /* Info.plist */,
 				CBE99A842BDF2409008DC0D8 /* StoryTunesApp.swift */,
 				CBE99A862BDF2409008DC0D8 /* ContentView.swift */,
@@ -106,6 +125,7 @@
 				CBE99A8A2BDF240B008DC0D8 /* Preview Content */,
 				CBB70EA22BE0E2C800CECA3C /* SlidingAnimationView.swift */,
 				CBB70EA42BE0EC0900CECA3C /* HomeView.swift */,
+				CB3CC6AC2BF7543200280ADA /* TrackListView.swift */,
 			);
 			path = StoryTunes;
 			sourceTree = "<group>";
@@ -265,9 +285,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3CC6A92BF751B800280ADA /* SpotifyAuth.swift in Sources */,
 				CBB70EA32BE0E2C800CECA3C /* SlidingAnimationView.swift in Sources */,
+				CB3CC6AD2BF7543200280ADA /* TrackListView.swift in Sources */,
+				CB3CC6AB2BF751E200280ADA /* SpotifyFunc.swift in Sources */,
 				CBB70EA52BE0EC0900CECA3C /* HomeView.swift in Sources */,
 				CBE99A872BDF2409008DC0D8 /* ContentView.swift in Sources */,
+				CB3CC6A62BF7506600280ADA /* SpotifyModel.swift in Sources */,
 				CBE99A852BDF2409008DC0D8 /* StoryTunesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
