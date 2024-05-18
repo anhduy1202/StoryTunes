@@ -8,6 +8,11 @@
 import SwiftUI
 import Foundation
 
+class AppSettings: ObservableObject {
+    @Published var isDarkModeEnabled: Bool = false
+}
+
+
 
 struct HomeView: View {
     @State private var searchText = ""
@@ -33,6 +38,7 @@ struct HomeView: View {
 }
 
 struct ExtendedView: View {
+    @EnvironmentObject var appSettings: AppSettings
     var body: some View {
         BackgroundView(bgColor:"mainGrey", topRightCircles:["mainGreen","mainGreen"], topLeftCircle:"gradientPurple")
                VStack {

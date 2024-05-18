@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SpotifySession: ObservableObject {
     @Published var accessToken: String?

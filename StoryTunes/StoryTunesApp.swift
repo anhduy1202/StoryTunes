@@ -10,10 +10,14 @@ import SwiftUI
 @main
 struct StoryTunesApp: App {
     var spotifySession = SpotifySession()
+    var badgecollection = BadgeCollection()
+    var appSettings = AppSettings()
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(spotifySession)
+                .environmentObject(badgecollection)
+                .environmentObject(appSettings)
         }
     }
 }

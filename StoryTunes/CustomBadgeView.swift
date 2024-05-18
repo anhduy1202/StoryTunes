@@ -19,6 +19,7 @@ class BadgeViewModel: ObservableObject {
         Badge(name: "Tyler Meme", image: "design3"),
         Badge(name: "Lightning", image: "design4")
     ]
+    @Published var selectedDesign: String = "design1"
 }
 
 struct BadgeView: View {
@@ -45,47 +46,28 @@ struct BadgeView: View {
 
 struct CustomBadgeView: View {
     @ObservedObject var viewModel = BadgeViewModel()
+    @State private var isLinkActive = false
+    @State private var isImageLoaded = false
     var track: TrackItem
     var body: some View {
         ZStack {
             ExtendedView()
             VStack {
-                HStack(spacing: 20) {
-                    // Track image
-                    if let imageUrl = track.album.images.first?.url,
-                       let url = URL(string: imageUrl) {
-                        AsyncImage(url: url) { image in
-                            image.resizable()
-                        } placeholder: {
-                            Color.black  // Placeholder if no image is available
-                        }
-                        .frame(width: 100, height: 100)
-                        .cornerRadius(10)
-                    }
-                    
-                    // Track name and artist
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(track.name)
-                            .font(.title2)
-                            .fontWeight(.bold)
-                        
-                        Text(track.artists.first?.name ?? "Unknown Artist")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
+                BadgeDesignView(track: track, design: viewModel.selectedDesign, fontName: "Helvetica", isImageLoaded: $isImageLoaded)
+                NavigationLink(destination: CustomFontView(track: track, design: viewModel.selectedDesign), isActive: $isLinkActive) {
+                    Button("Continue") {
+                        isLinkActive = true
+                    }.foregroundColor(.white)
+                    .padding()
+                    .background(Color.black)
+                    .cornerRadius(10)
+                    .font(.headline)
                 }
-                .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 5)
-                .padding()
-                
-                Spacer()  // Pushes everything to the top
                     .navigationTitle(track.name)
                     .padding()
                 Text("Pick your badge")
-                    .font(.title)
+                    .font(.title3)
                     .padding()
                 Image(systemName: "arrow.down")
                     .resizable()
@@ -95,12 +77,65 @@ struct CustomBadgeView: View {
                 List(viewModel.badges.indices, id: \.self) { index in
                     BadgeView(badge: viewModel.badges[index])
                         .listRowBackground(Color.clear)
+                        .onTapGesture {
+                            viewModel.selectedDesign = viewModel.badges[index].image
+                        }
                 }
-                .frame(height: 300)
+                .frame(height: 200)
                 .listStyle(PlainListStyle())
                 .background(Color.white)
                 .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
             }
         }
+    }
+}
+
+struct BadgeDesignView: View {
+    @ObservedObject var viewModel = BadgeViewModel()
+    var track: TrackItem
+    var design: String
+    var fontName: String
+    
+    @Binding var isImageLoaded: Bool
+    var body: some View {
+        HStack(spacing: 20) {
+            Spacer()
+            if let imageUrl = track.album.images.first?.url, let url = URL(string: imageUrl) {
+                AsyncImage(url: url) { phase in
+                    if let image = phase.image {
+                        image.resizable()
+                            .onAppear { isImageLoaded = true }
+                    } else if phase.error != nil {
+                        Color.red // Indicates an error
+                    } else {
+                        Color.black // Placeholder if no image is available
+                    }
+                }
+                .frame(width: 80, height: 80)
+                .cornerRadius(10)
+            }
+            
+            // Track name and artist
+            VStack(alignment: .leading, spacing: 4) {
+                Text(track.name)
+                    .font(.custom(fontName, size: 20))
+                    .fontWeight(.bold)
+                
+                Text(track.artists.first?.name ?? "Unknown Artist")
+                    .font(.custom(fontName, size: 20))
+                    .foregroundColor(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding()
+        .background(
+            Image(design)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(10)
+        )
+        .cornerRadius(10)
+        .shadow(radius: 5)
+        .padding()
     }
 }
